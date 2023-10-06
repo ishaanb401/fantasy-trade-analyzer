@@ -16,24 +16,47 @@
     <h1>Fantasy Football Trade Analyzer</h1>
 
     <label for="player1">Player 1:</label>
-    <select id="player1" name="player1" class="js-example-basic-single" style="width: 200px;">
-        <!-- Add options for Player 1 -->
-        <option value="player1_option1">Player 1 Option 1</option>
-        <option value="player1_option2">Player 1 Option 2</option>
-        <!-- Add more options as needed -->
-    </select>
+    <input type="text" id="player1" name="player1" style="width: 200px;">
+    <div id="player1Suggestions"></div>
 
     <label for="player2">Player 2:</label>
-    <select id="player2" name="player2" class="js-example-basic-single" style="width: 200px;">
-        <!-- Add options for Player 2 -->
-        <option value="player2_option1">Player 2 Option 1</option>
-        <option value="player2_option2">Player 2 Option 2</option>
-        <!-- Add more options as needed -->
-    </select>
+    <input type="text" id="player2" name="player2" style="width: 200px;">
+    <div id="player2Suggestions"></div>
 
     <script>
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2();
+        // Sample data for player names
+        const playerNames = [
+            "Ishaan Bhargava",
+            "Ganesh Saranga",
+            "Satvik Movva",
+            "Kyle Zolla",
+        ];
+
+        function updateSuggestions(inputElement, suggestionsElement) {
+            const inputValue = inputElement.value.toLowerCase();
+            const filteredNames = playerNames.filter((name) =>
+                name.toLowerCase().includes(inputValue)
+            );
+
+            suggestionsElement.innerHTML = "";
+
+            filteredNames.forEach((name) => {
+                const suggestion = document.createElement("div");
+                suggestion.textContent = name;
+                suggestion.addEventListener("click", () => {
+                    inputElement.value = name;
+                    suggestionsElement.innerHTML = "";
+                });
+                suggestionsElement.appendChild(suggestion);
+            });
+        }
+
+        document.getElementById("player1").addEventListener("input", function () {
+            updateSuggestions(this, document.getElementById("player1Suggestions"));
+        });
+
+        document.getElementById("player2").addEventListener("input", function () {
+            updateSuggestions(this, document.getElementById("player2Suggestions"));
         });
     </script>
 </body>

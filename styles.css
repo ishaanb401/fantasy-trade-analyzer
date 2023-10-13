@@ -6,7 +6,31 @@ body {
     margin: 0;
     padding: 20px;
     text-align: center;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    height: 100%; 
+    background-image: url('https://espnpressroom.com/us/files/2015/08/FFL-Logo.png');
+    background-repeat: no-repeat;
 }
+
+main {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000; 
+    height: 100%;
+  }
+
+.left-col {
+    grid-column: 1;
+    border-right: 1px solid #000;;
+    height: 100%;
+
+}
+
+.right-col {
+    grid-column: 3;  
+    border-left: 1px solid #000;
+    height: 100%;
+  }
 
 h1 {
     color: #1a1a1a;

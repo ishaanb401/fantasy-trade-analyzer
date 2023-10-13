@@ -1,6 +1,6 @@
-console.log("Fantasy Football Trade Analyzer")
-
 import { Client } from 'espn-fantasy-football-api';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Create a Client instance and configure it
 const myClient = new Client({ leagueId: 387659 });

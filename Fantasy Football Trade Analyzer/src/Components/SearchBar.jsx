@@ -7,19 +7,19 @@ export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
-    fetch("")//https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/athletes?limit=1000&active=true")
+    fetch("https://jsonplaceholder.typicode.com/users") // could not find working NFL API for free
       .then((response) => response.json())
       .then((json) => {
-        console.log(json); //
         const results = json.filter((user) => {
+          console.log(user);
           return (
             value &&
             user &&
-            user.fullName &&
-            user.fullName.toLowerCase().includes(value)
+            user.name &&
+            user.name.toLowerCase().includes(value)
           );
         });
-         setResults(results);
+        setResults(results);
       });
   };
 

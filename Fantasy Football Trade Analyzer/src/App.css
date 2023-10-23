@@ -1,0 +1,35 @@
+.App {
+  background-color: #eee;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* .search-bar-container {
+  padding-top: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+} */
+.search-bar-container {
+  padding-top: 20vh;
+  width: 80%; /* Adjusted width */
+  margin: auto;
+  display: flex;
+  justify-content: space-between; /* Distributes child items evenly */
+}
+
+.individual-search-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: blue;
+  margin-top: 20vh;
+}

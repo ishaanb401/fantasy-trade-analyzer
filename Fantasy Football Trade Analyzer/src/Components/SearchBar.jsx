@@ -7,19 +7,25 @@ export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users") // could not find working NFL API for free
+    fetch("https://api.sleeper.app/v1/players/nfl")
       .then((response) => response.json())
-      .then((json) => {
-        const results = json.filter((user) => {
-          console.log(user);
-          return (
-            value &&
-            user &&
-            user.name &&
-            user.name.toLowerCase().includes(value)
-          );
-        });
-        setResults(results);
+      .then((data) => {
+        // Check the structure of the response data
+        console.log(data);
+        
+        if (typeof data === 'object') {
+          // Convert the object properties to an array and filter it
+          const results = Object.values(data).filter((user) => {
+            return user && user.full_name && user.full_name.toLowerCase().includes(value);
+          });
+          console.log(results);
+          setResults(results);
+        } else {
+          console.error("API response is not in the expected format");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   };
 
@@ -39,3 +45,5 @@ export const SearchBar = ({ setResults }) => {
     </div>
   );
 };
+
+
